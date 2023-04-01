@@ -75,11 +75,30 @@
                                         </div>
                                     </div>
                                     </div>
-                                    <button type="button" class="col-md-4 mt-3 btn btn-md btn-outline-primary btnSubmitTransaction">Submit</button>
+                                    <button type="button" class="col-md-2 mt-3 btn btn-md btn-dark btnSubmitTransaction">
+                                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                        Submit
+                                    </button>
+                                    
                                 </div>
                             </div>
                         </div>
             
+                    </div>
+                    <div class="col-md-8 offset-md-2">
+                        <div class="row" style="text-align: left;"><p class="mb-1"><strong>Status:</strong> <span class="text-success"><b>Success</b></span><span class="text-danger"><b>Error</b></span></p></div>
+                        <div class="row" style="text-align: left;">
+                            <div class="col-sm-12">
+                                <label for="contentResponse" class="form-label"><b>Content response</b></label>
+                                <textarea class="form-control" id="contentResponse" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: left;">
+                            <div class="col-sm-12">
+                                <label for="messageReceived" class="form-label"><b>Message received</b></label>
+                                <textarea class="form-control" id="messageReceived" rows="3"></textarea>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
