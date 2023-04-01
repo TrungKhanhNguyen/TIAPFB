@@ -19,9 +19,9 @@ For example, your command might look something like this:
 ```
 emc@ubuntu:~$ google-chrome --disable-web-security -–allow-file-access-from-files --user-data-dir="/home/emc/tempChrome"
 ```
-\
 Since Chrome 22+ you will get a notify message that says: You are using an unsupported command-line flag: --disable-web-security. Stability and security will suffer.
 However you can just ignore that message.
+Then open ```payforblob.html``` file with chrome browser just opened
 
 ## Sending transaction
 
