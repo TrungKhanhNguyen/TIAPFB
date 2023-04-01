@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.111.3">
+    <title>Album example · Bootstrap v5.3</title>
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="dist/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header data-bs-theme="dark">
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <img class="d-block mx-auto" src="dist/img/celestia-logo-white.svg" alt="" width="121" height="40">
+                    
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="text-center">
+                <div class="py-2 text-center">
+                   <h2>Celestia Pay For Blob</h2>
+                    <p class="lead">This is simple .NET Core MVC Application allowing users to submit PayForBlob Transactions.</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="col">
+                            <div class="card mb-4 rounded-3 shadow-sm">
+                                <div class="card-header py-2">
+                                    <h4 class="my-0 fw-normal">Submit a PFB transaction</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+            
+                                    
+                                     <div class="col-sm-6">
+                                        <label for="url" class="form-label">URL</label>
+                                            <input type="text" class="form-control" id="url" placeholder="" value="http://localhost:26659/submit_pfd" required="">
+                                        <div class="invalid-feedback">
+                                        Valid url is required.
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="namespaceid" class="form-label">Namespace_id</label>
+                                            <input type="text" class="form-control" id="namespaceid" placeholder="" value="0c204d39600fddd3" required="">
+                                        <div class="invalid-feedback">
+                                        Valid namespace_id is required.
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label for="data" class="form-label">Data</label>
+                                            <input type="text" class="form-control" id="data" placeholder="" value="f1f20ca8007e910a3bf8b2e61da0f26bca07ef78717a6ea54165f5" required="">
+                                        <div class="invalid-feedback">
+                                            Valid data is required.
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="gaslimit" class="form-label">Gas limit</label>
+                                            <input type="text" class="form-control" id="gaslimit" placeholder="" value="80000" required="">
+                                        <div class="invalid-feedback">
+                                            Valid gas limit is required.
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="fee" class="form-label">Fee</label>
+                                        <input type="text" class="form-control" id="fee" placeholder="" value="2000" required="">
+                                        <div class="invalid-feedback">
+                                            Valid fee is required.
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <button type="button" class="col-md-4 mt-3 btn btn-md btn-outline-primary btnSubmitTransaction">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Frankie Nguyen - TIAPFB
+        </div>
+    </footer>
+    <script src="dist/js/jquery.min.js"></script>
+    <script src="dist/js/bootstrap.bundle.min.js"></script>
+    <script src="dist/js/site.js" asp-append-version="true"></script>
+    
+</body>
+</html>
