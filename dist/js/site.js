@@ -7,8 +7,16 @@ $(document).ready(function () {
     $('.btnSubmitTransaction').click(function(){
         $(this).find('.spinner-border').removeClass('d-none');
         $(this).prop('disabled', true);
+        $('.text-success').addClass('d-none');
+        $('.text-danger').addClass('d-none');
         loadData();
     });
+
+    function enableSubmitBtn(){
+        $('.btnSubmitTransaction').find('.spinner-border').addClass('d-none');
+        $('.btnSubmitTransaction').prop('disabled', false);
+        $('.btnText').text('Submit');
+    }
 
     async function loadData() {
         var pfburl = $('#url').val();
@@ -16,25 +24,63 @@ $(document).ready(function () {
         var pfbnamespace = $('#namespaceid').val();
         var pfbgaslimit = $('#gaslimit').val();
         var pfbfee = $('#fee').val();
-        const parameters = {namespace_id : pfbnamespace, data : pfbdata, gas_limit: pfbgaslimit, fee : pfbfee};
-        var sdsd = JSON.stringify(parameters);
-        console.log(sdsd);
-            // const test = await fetch(pfburl, {
-            //     method: 'POST',
-            //     body: JSON.stringify(parameters),
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     }
-            // })
-            // .then(response => response.text())
-            // .catch((error) => {
-            //     console.error("Error:", error);
-            //   });
-            // postData("http://localhost:26659/submit_pfb", { "namespace_id": "0c204d39600fddd3", "data": "f1f20ca8007e910a3bf8b2e61da0f26bca07ef78717a6ea54165f5","gas_limit": 80000,"fee": 2000}).then((data) => {
-            //     console.log(data); // JSON data parsed by `data.json()` call
-            // });
-            //const datatest = await test.json();
-            //$('.contentResponse').html(test);
+        
+        var tempParams = '{"namespace_id": "repnamespaceid","data": "repdata","gas_limit": repgaslimit, "fee": repfee}';
+
+        var parameters = tempParams.replace('repnamespaceid',pfbnamespace).replace('repdata',pfbdata).replace('repgaslimit',pfbgaslimit).replace('repfee',pfbfee);
+
+        console.log(parameters);
+              $.ajax({
+                url: pfburl,
+                type: 'POST',
+                data: parameters ,
+                contentType: 'application/json',
+                success: function (res) {
+                    console.log(res);
+                    //alert(response.status);
+                    var dataparse = JSON.stringify(res,undefined,2);
+                    $('#contentResponse').text(dataparse);
+                    $('#preContentResponse').text(dataparse);
+                    //console.log(d.height); 
+                    var responseHeight = res.height;
+                    var responsetxhash = res.txhash;
+                    $('.blockHeight').text(responseHeight);
+                    $(".transactionId").attr("href", "https://testnet.mintscan.io/celestia-testnet/txs/"+responsetxhash)
+                    $(".transactionId").text(responsetxhash);
+                    
+
+                    $('.text-success').removeClass('d-none');
+                    $('.text-danger').addClass('d-none');
+
+                    var getmsgUrl = 'http://localhost:26659/namespaced_shares/'+ pfbnamespace +'/height/' + responseHeight;
+
+                    console.log(getmsgUrl);
+                    $('.btnText').text('Getting message...');
+                    $.ajax({
+                        url: getmsgUrl,
+                        type: 'GET',
+                        contentType: 'json',
+                        success: function(msgResponse){
+                            $('#messageReceived').html(msgResponse);
+                            enableSubmitBtn();
+                        },
+                        error: function(req,stt,err){
+                            $('#messageReceived').html(req.responseText);
+                            enableSubmitBtn();
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    $('#contentResponse').html(xhr.responseText);
+                    $('.text-danger').removeClass('d-none');
+                    $('.text-success').addClass('d-none');
+                    enableSubmitBtn();
+                    //console.log(xhr.responseText);
+                }
+            }); 
+            
+            
+            
         }
 });
 
