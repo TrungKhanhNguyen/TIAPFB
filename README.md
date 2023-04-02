@@ -10,8 +10,8 @@ Although, you are strongly recommended to edit, rebuild source code to accept CO
 
 
 ## Run browser without CORS
-This section focus only into Google Chrome, with other browsers you have to find a way to turn off the security feature by yourself\
-Close all opened Chrome browser, then run the following command:
+This section focus only into Google Chrome, with other browsers you have to find a way to turn off the security feature by yourself.\
+First, close all opened Chrome browser, then run the following command:
 ```
 google-chrome --disable-web-security -–allow-file-access-from-files --user-data-dir="<temp_folder>"
 ```
