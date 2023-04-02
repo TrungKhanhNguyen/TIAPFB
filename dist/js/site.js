@@ -5,12 +5,20 @@
 $(document).ready(function () {
 
     $('.btnSubmitTransaction').click(function(){
+        clearAllText();
         $(this).find('.spinner-border').removeClass('d-none');
         $(this).prop('disabled', true);
         $('.text-success').addClass('d-none');
         $('.text-danger').addClass('d-none');
         loadData();
     });
+
+    function clearAllText(){
+        $('.blockHeight').text('');
+        $(".transactionId").text('');
+        $('#contentResponse').text('');
+        $('#messageReceived').text('');
+    }
 
     function enableSubmitBtn(){
         $('.btnSubmitTransaction').find('.spinner-border').addClass('d-none');
@@ -29,7 +37,7 @@ $(document).ready(function () {
 
         var parameters = tempParams.replace('repnamespaceid',pfbnamespace).replace('repdata',pfbdata).replace('repgaslimit',pfbgaslimit).replace('repfee',pfbfee);
 
-        console.log(parameters);
+        //console.log(parameters);
               $.ajax({
                 url: pfburl,
                 type: 'POST',
@@ -40,12 +48,11 @@ $(document).ready(function () {
                     //alert(response.status);
                     var dataparse = JSON.stringify(res,undefined,2);
                     $('#contentResponse').text(dataparse);
-                    $('#preContentResponse').text(dataparse);
                     //console.log(d.height); 
                     var responseHeight = res.height;
                     var responsetxhash = res.txhash;
                     $('.blockHeight').text(responseHeight);
-                    $(".transactionId").attr("href", "https://testnet.mintscan.io/celestia-testnet/txs/"+responsetxhash)
+                    $(".transactionId").attr("href", "https://testnet.mintscan.io/celestia-incentivized-testnet/txs/"+responsetxhash)
                     $(".transactionId").text(responsetxhash);
                     
 
