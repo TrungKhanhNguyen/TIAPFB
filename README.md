@@ -4,8 +4,8 @@
 Simple UI for allowing users to submit PayForBlob Transactions.
 
 # Usage
-Run payforblob.html in browser. Since the default node's ```/submit_pfb``` endpoint does not support CORS when sending POST requests from the browser, you must disable the browser's security when running the HTML file.
-Although, you are strongly recommended to edit, rebuild source code to accept CORS on server side. If you already done that, you can skip ```Run browser without CORS``` part, just open browser as usual, no need to disable security feature
+Run payforblob.html in browser. Since the default node's ```/submit_pfb``` endpoint does not support cross-origin request when sending POST requests from the browser, you must disable the browser's security when running the HTML file.
+Although, you are strongly recommended to edit, rebuild source code to accept CORS (Cross-Origin Resource Sharing)  on server side. If you already done that, you can skip ```Run browser without CORS``` part, just open browser as usual, no need to disable security feature
 
 
 
@@ -18,11 +18,12 @@ google-chrome --disable-web-security -–allow-file-access-from-files --user-dat
 With ```<temp_folder>``` is path to temporary directory\
 For example, your command might look something like this:
 ```
-emc@ubuntu:~$ google-chrome --disable-web-security -–allow-file-access-from-files --user-data-dir="/home/emc/tempChrome"
+google-chrome --disable-web-security -–allow-file-access-from-files --user-data-dir="/home/emc/tempChrome"
 ```
 Since Chrome 22+ you will get a notify message that says: You are using an unsupported command-line flag: --disable-web-security. Stability and security will suffer.
 However you can just ignore that message.
-Then open ```payforblob.html``` file with chrome browser just opened
+Then open ```payforblob.html``` file with chrome browser just opened.\
+If you do not disable the security feature of your browser you may get the following error when sending the request : "Access to XMLHttpRequest at '...' from origin '...' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource." 
 
 ## Sending transaction
 
