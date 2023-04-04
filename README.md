@@ -32,8 +32,8 @@ Second, edit ```server.go``` file by running the following command:
 cd celestia-node/
 nano api/gateway/server.go
 ```
-Add ```"github.com/rs/cors"``` to ```import``` section:
-Then replace the contents of NewServer with the following:
+Add ```"github.com/rs/cors"``` to ```import``` section,
+then replace the contents of NewServer function with the following:
 ```
 func NewServer(address, port string) *Server {
 	srvMux := mux.NewRouter()
