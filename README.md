@@ -4,13 +4,13 @@
 Simple UI for allowing users to submit PayForBlob Transactions.
 
 # Usage
-Run payforblob.html in browser. Since the default node's ```/submit_pfb``` endpoint does not support cross-origin request when sending POST requests from the browser, you must disable the browser's security when running the HTML file or you have to edit, rebuild source code to accept CORS (Cross-Origin Resource Sharing) on server side.\
-If you do not good at programming, follow ```Option 1. Run browser without CORS``` instruction.\
-If you know about programming and Golang, then follow ```Option 2. Enable CORS on server side```.\
+Run ```payforblob.html``` in a browser. Since the default node's ```/submit_pfb``` endpoint does not support cross-origin requests when sending POST requests from the browser, you must disable the browser's security when running the HTML file. Alternatively, you can edit and rebuild the source code to accept CORS (Cross-Origin Resource Sharing) on the server-side.\
+If you do NOT good at programming, follow ```Option 1. Run browser without CORS``` instructions.\
+If you have knowledge of programming and Golang, then follow ```Option 2. Enable CORS on server side```.
 
 ## Option 1. Run browser without CORS
-This section focus only into Google Chrome, with other browsers you have to find a way to turn off the security feature by yourself.\
-First, close all opened Chrome browser, then run the following command (NOT under ```root``` privilege):
+This section focuses only on Google Chrome. With other browsers, you will need to find a way to turn off the security feature yourself.\
+First, close all open Chrome browsers, and then run the following command (NOT under ```root``` privilege):
 ```
 google-chrome --disable-web-security -–allow-file-access-from-files --user-data-dir="<temp_folder>"
 ```
@@ -19,9 +19,8 @@ For example, your command might look something like this:
 ```
 google-chrome --disable-web-security -–allow-file-access-from-files --user-data-dir="/home/emc/tempChrome"
 ```
-Since Chrome 22+ you will get a notify message that says: You are using an unsupported command-line flag: --disable-web-security. Stability and security will suffer.
-However you can just ignore that message.
-Then open ```payforblob.html``` file with chrome browser just opened.\
+Since Chrome 22+, you may receive a notification message that says: 'You are using an unsupported command-line flag: --disable-web-security. Stability and security will suffer.' However, you can ignore this message.
+Then open the ```payforblob.html``` file with the Chrome browser that you just opened.\
 If you do not disable the security feature of your browser you may get the following error when sending the request : "Access to XMLHttpRequest at '...' from origin '...' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource." 
 ## Option 2. Enable CORS on server side
 First, stop ```celestia-lightd``` service
